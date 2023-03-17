@@ -1,0 +1,42 @@
+﻿@model shopProject.ViewModels.OViewModels.OrdersDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.OrderDate):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.OrderDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.OrderNumber):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.OrderNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.TotalAmount):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.TotalAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.CustomerId):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.CustomerId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model?.Order.Id">Edit</a>
+    <a class="btn btn-primary" style="width: auto" asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,52 @@
+﻿@model shopProject.ViewModels.OIViewModels.OrderItemsViewModel
+@inject SignInManager<ApplicationUser> SignInManager;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content__head">
+    <h1>Order Items</h1>
+    <div class="form-group">
+        <a class="btn btn-primary" style="width: auto" asp-action="Create">Create New</a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="content__container">
+        @foreach (var item in Model.OrderItems)
+        {
+            <div class="content__body">
+                <div class="content__picture">
+                    <picture><source srcset="img/orderitem.png" type="image/png"><img src="~/img/orderitem.png" alt="" class="content__img"></picture>
+                </div>
+                <div class="content__title">
+                    @Html.DisplayNameFor(modelItem => item.UnitPrice):
+                    $@Html.DisplayFor(modelItem => item.UnitPrice)
+                </div>
+                <div class="content__item">
+                    @Html.DisplayNameFor(modelItem => item.Quantity):
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </div>
+                <div class="content__item">
+                    @Html.DisplayNameFor(modelItem => item.OrderId):
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </div>
+                <div class="content__item">
+                    @Html.DisplayNameFor(modelItem => item.ProductId):
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </div>
+                <button class="content__button">
+                    <a class="content__btn" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </button>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <div class="form-group">
+                        <a class="btn btn-primary" style="width: -webkit-fill-available" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger" style="width: -webkit-fill-available" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

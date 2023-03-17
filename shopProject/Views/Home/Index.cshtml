@@ -1,0 +1,27 @@
+﻿@model shopProject.ViewModels.PViewModels.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content">
+    <div class="content__container">
+        @foreach (var item in Model.Products)
+        {
+            <div class="content__body">
+                <div class="content__picture">
+                    <picture><source srcset="img/product.png" type="image/png"><img src="~/img/product.png" alt="" class="content__img"></picture>
+                </div>
+                <div class="content__title" style="height: 60px">
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </div>
+                <div class="content__item">
+                    $@Html.DisplayFor(modelItem => item.UnitPrice)
+                </div>
+                <button class="content__button">
+                    <a class="content__btn" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </button>
+            </div>
+        }
+    </div>
+</div>
