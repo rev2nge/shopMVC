@@ -11,7 +11,7 @@ namespace shopProject.Controllers
 {
     [Authorize(Roles = "admin")]
     public class AdministrationController : Controller
-    {
+    {dds
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<AdministrationController> _logger;
