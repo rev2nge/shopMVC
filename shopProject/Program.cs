@@ -36,14 +36,7 @@ builder.Services.AddMvc(options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("DeleteRolePolicy",
-        policy => policy.RequireClaim("Delete Role"));
-
-    options.AddPolicy("EditRolePolicy",
-    policy => policy.RequireClaim("Edit Role", "true")
-                    .RequireRole("admin"));
-
-    options.AddPolicy("AdminRolePolicy",
+    options.AddPolicy("admin",
         policy => policy.RequireRole("admin"));
 });
 

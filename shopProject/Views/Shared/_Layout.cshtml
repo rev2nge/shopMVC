@@ -56,12 +56,12 @@
                                    asp-action="ListUsers">Users</a>
                                     <a class="dropdown-item" asp-controller="Administration"
                                    asp-action="ListRoles">Roles</a>
-                                    <a class="dropdown-item" asp-controller="Products"
+                                     <a class="dropdown-item" asp-controller="Products"
                                    asp-action="Index">Products</a>
                                 </div>
                             </li>
                         }
-                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin") || User.IsInRole("Employee"))
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin") || User.IsInRole("employee"))
                         {
                             <li class="nav-item">
                                 <div style="display: flex">

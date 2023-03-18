@@ -11,9 +11,6 @@
 
 @if(Model.Any())
 {
-   <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
-        asp-controller="Administration">Add new role</a>
-
     foreach(var role in Model)
     {
          <div class="card mb-3">
@@ -22,30 +19,6 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">@role.Name</h5>
-            </div>
-            <div class="card-footer">
-                <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-
-                    @if((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
-                    {
-                        <a asp-action="EditRole" asp-controller="Administration"
-                         asp-route-id="@role.Id" class="btn btn-primary">
-                         Edit
-                        </a>
-                    }
-
-                    <span id="confirmDeleteSpan_@role.Id" style="display: none">
-                        <span>Are you sure you want to delete?</span>
-                        <button type="submit" class="btn btn-danger">Yes</button>
-                        <a href="#" class="btn btn-primary"
-                           onclick="confirmDelete('@role.Id', false)">No</a>
-                    </span>
-
-                    <span id="deleteSpan_@role.Id">
-                                <a href="#" class="btn btn-danger" style="width: auto"
-                        onclick="confirmDelete('@role.Id', true)">Delete</a>
-                    </span>
-                </form>
             </div>
          </div>
     }
@@ -58,12 +31,8 @@ else
     </div>
     <div class="card-body">
         <h5 class="card-title">
-            Use the button below to create a role
+            List Roles is clean. Create a new role.
         </h5>
-        <a class="btn btn-primary" style="width:auto"
-           asp-controller="Administration" asp-action="CreateRole">
-            Create Role
-        </a>
     </div>
 </div>
 }
