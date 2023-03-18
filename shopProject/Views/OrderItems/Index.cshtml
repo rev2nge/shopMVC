@@ -7,9 +7,12 @@
 
 <div class="content__head">
     <h1>Order Items</h1>
-    <div class="form-group">
-        <a class="btn btn-primary" style="width: auto" asp-action="Create">Create New</a>
-    </div>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
+    {
+        <div class="form-group">
+            <a class="btn btn-primary" style="width: auto" asp-action="Create">Create New</a>
+        </div>
+    }
 </div>
 
 <div class="content">
@@ -36,11 +39,12 @@
                     @Html.DisplayNameFor(modelItem => item.ProductId):
                     @Html.DisplayFor(modelItem => item.ProductId)
                 </div>
-                <button class="content__button">
-                    <a class="content__btn" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </button>
-                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
                 {
+                    <button class="content__button">
+                        <a class="content__btn" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </button>
                     <div class="form-group">
                         <a class="btn btn-primary" style="width: -webkit-fill-available" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                         <a class="btn btn-danger" style="width: -webkit-fill-available" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
